@@ -31,7 +31,7 @@ const db = mongoose.connection;
 db.on('error', error => console.log(error));
 db.once('open', () => console.log('connected to database'));
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'lolgamebuddy-frontend/build')));
 
