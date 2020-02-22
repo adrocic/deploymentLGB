@@ -1,5 +1,7 @@
 import express = require('express');
 import { ErrorRequestHandler, Response, Request, NextFunction } from 'express';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
 import cors = require('cors');
 import mongoose = require('mongoose');
 import matchesRouter from './routes/matches';
