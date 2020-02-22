@@ -1,4 +1,4 @@
-import express from 'express';
+import express = require('express');
 
 //Create the router for home
 const homeRouter = express.Router();

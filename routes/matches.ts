@@ -1,4 +1,4 @@
-import express from 'express';
+import express = require('express');
 import { getMatchListByAccountId, getMatchByMatchId } from '../middleware/axiosMiddleWare';
 
 const matchesRouter = express.Router();

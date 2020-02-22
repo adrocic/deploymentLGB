@@ -1,19 +1,17 @@
-import express = require('express');
-import { getSummonerByName } from '../middleware/axiosMiddleWare';
-
+"use strict";
+exports.__esModule = true;
+var express = require("express");
+var axiosMiddleWare_1 = require("../middleware/axiosMiddleWare");
 //Create the router for posts
-const summonerRouter = express.Router();
-
+var summonerRouter = express.Router();
 //Get all posts
-summonerRouter.get('/:name', getSummonerByName);
-
+summonerRouter.get('/:name', axiosMiddleWare_1.getSummonerByName);
 // //Create new post
 // postsRouter.post('/', async (req, res) => {
 //     const post = new Post({
 //         title: req.body.title,
 //         description: req.body.description,
 //     });
-
 //     try {
 //         const savedPost = await post.save();
 //         res.status(201).json(savedPost);
@@ -21,7 +19,6 @@ summonerRouter.get('/:name', getSummonerByName);
 //         res.status(400).json({ message: error });
 //     }
 // });
-
 // //Delete post by ID
 // postsRouter.delete('/:postID', getPost, async (req: Request, res: GetPostResponse) => {
 //     try {
@@ -31,7 +28,6 @@ summonerRouter.get('/:name', getSummonerByName);
 //         res.json({ message: error });
 //     }
 // });
-
 // //Update post by ID
 // postsRouter.patch('/:postID', getPost, async (req: Request, res: GetPostResponse) => {
 //     try {
@@ -41,6 +37,5 @@ summonerRouter.get('/:name', getSummonerByName);
 //         res.json({ message: error });
 //     }
 // });
-
 //Exports the router which will point back to this file and decide which function to use
-export default summonerRouter;
+exports["default"] = summonerRouter;

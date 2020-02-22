@@ -1,10 +1,11 @@
-import express, { ErrorRequestHandler, Response, Request, NextFunction } from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
+import express = require('express');
+import { ErrorRequestHandler, Response, Request, NextFunction } from 'express';
+import cors = require('cors');
+import mongoose = require('mongoose');
 import matchesRouter from './routes/matches';
 import summonerRouter from './routes/summoner';
 import homeRouter from './routes/home';
-import path from 'path';
+import path = require('path');
 import './env';
 const app = express();
 
