@@ -1,0 +1,48 @@
+import express, { ErrorRequestHandler, Response, Request, NextFunction } from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import matchesRouter from './routes/matches';
+import summonerRouter from './routes/summoner';
+import homeRouter from './routes/home';
+import path from 'path';
+import './env';
+const app = express();
+
+interface Error extends ErrorRequestHandler {
+    status?: number;
+    message: string;
+}
+
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use('/', homeRouter);
+app.use('/summoners', summonerRouter);
+app.use('/matches', matchesRouter);
+
+//DATABASE CONNECTION STUFF
+mongoose.connect(process.env.DB_CONNECTION ?? '', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+
+db.on('error', error => console.log(error));
+db.once('open', () => console.log('connected to database'));
+
+const PORT = process.env.PORT || 8080;
+
+app.use(express.static(path.join(__dirname, 'lolgamebuddy-frontend/build')));
+
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    res.status(err.status || 500);
+    res.json({ message: err.message });
+    next();
+});
+
+app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
