@@ -8,7 +8,7 @@
         "start": "node -r ts-node/register server.ts",
         "start:watch": "nodemon",
         "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-        "heroku-postbuild": "cd Client && npm install && npm run build",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
         "postinstall": "tsc"
     },
     "author": "Anel Drocic",
