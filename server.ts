@@ -36,10 +36,10 @@ db.once('open', () => console.log('connected to database'));
 
 const PORT = process.env.PORT || 8080;
 
-app.use(express.static(path.join(__dirname, 'lolgamebuddy-frontend/build')));
+app.use(express.static(path.join(__dirname, 'Client/build')));
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'Client/build', 'index.html'));
 });
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
