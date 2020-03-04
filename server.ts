@@ -19,7 +19,7 @@ interface Error extends ErrorRequestHandler {
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'Client/build/static')));
+app.use(express.static(path.join(__dirname, 'Client/build')));
 app.use('/', homeRouter);
 app.use('/summoners', summonerRouter);
 app.use('/matches', matchesRouter);
