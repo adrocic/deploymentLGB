@@ -3,7 +3,7 @@ import summonerInstance from './summonerInstance';
 import matchInstance from './matchInstance';
 import leagueInstance from './leagueInstance';
 import Match from '../models/Match';
-import '../env';
+import '../env.ts';
 
 interface MatchResponse extends Response {
     match?: Document | null;
@@ -64,17 +64,13 @@ export const getMatchByMatchId = async (req: Request, res: MatchResponse, next: 
     try {
         const match = await Match.findOne({ gameId: gameId });
         if (match) {
-            console.log(match);
             res.json(match);
-            next();
         } else {
             const fetchedMatch = await matchInstance.get(`/matches/${gameId}`);
             const dbMatch = { data: fetchedMatch.data, gameId: gameId };
             Match.create(dbMatch, function(err: any) {
                 if (err) console.log(err);
             });
-            console.log({ message: `No match found for ${gameId} in DB, adding to DB.` });
-            console.log(fetchedMatch);
             res.json(fetchedMatch);
         }
     } catch (error) {

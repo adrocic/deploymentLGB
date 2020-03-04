@@ -1,5 +1,5 @@
 import axios from 'axios';
-import '../env';
+import '../env.ts';
 
 const summonerInstance = axios.create({
     baseURL: 'https://na1.api.riotgames.com/lol/summoner/v4',
