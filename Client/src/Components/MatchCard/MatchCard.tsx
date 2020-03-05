@@ -54,7 +54,7 @@ const MatchCard: React.FC<MatchInfoProps> = ({ matchInfo, champId }): JSX.Elemen
                         <Image
                             rounded="full"
                             size="75px"
-                            src={`http://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${championPlayed.image.full}`}
+                            src={`https://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${championPlayed.image.full}`}
                         />
                         <Flex direction="column" height="75px" justifyContent="space-between">
                             <Text fontSize={12} color="gray.400">
