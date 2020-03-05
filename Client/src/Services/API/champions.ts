@@ -25,5 +25,5 @@ type fetchChampsResponse = {
 };
 
 export const fetchChamps = (): Promise<AxiosResponse<fetchChampsResponse>> => {
-    return axios.get('https://ddragon.leagueoflegends.com/cdn/10.3.1/data/en_US/champion.json');
+    return axios.get('http://ddragon.leagueoflegends.com/cdn/10.3.1/data/en_US/champion.json');
 };
