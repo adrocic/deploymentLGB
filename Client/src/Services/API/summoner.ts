@@ -27,5 +27,6 @@ type SummonerStats = {
 };
 
 export const fetchSummonerByName = ({ summonerName }: FetchSummonerProps): Promise<AxiosResponse<SummonerStats>> => {
+    console.log(API.defaults.baseURL);
     return API.get(`/summoners/${summonerName}`);
 };

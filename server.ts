@@ -19,12 +19,12 @@ interface Error extends ErrorRequestHandler {
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'Client/build')));
+app.use('/app/api/summoners', summonerRouter);
+app.use('/app/api/matches', matchesRouter);
 app.get(['/app', '/app/*'], (req, res) => {
     res.sendFile(path.join(__dirname, 'Client/build/index.html'));
 });
-app.use(express.static(path.join(__dirname, 'Client/build')));
-app.use('/summoners', summonerRouter);
-app.use('/matches', matchesRouter);
 
 //DATABASE CONNECTION STUFF
 mongoose.connect(process.env.DB_CONNECTION ?? '', {

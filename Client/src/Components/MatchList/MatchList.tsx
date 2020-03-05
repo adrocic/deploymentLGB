@@ -29,7 +29,7 @@ const MatchList: React.FC<MatchListProps> = ({ accountId }) => {
                 {data?.data ? (
                     <Flex direction="column">
                         <Stack spacing={6}>
-                            {data?.data.map(match => (
+                            {data?.data?.map(match => (
                                 <Flex key={match.gameId}>
                                     <MatchCard matchInfo={match} champId={match.champion} />
                                 </Flex>
