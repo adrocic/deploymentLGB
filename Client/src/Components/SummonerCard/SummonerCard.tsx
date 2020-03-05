@@ -15,7 +15,7 @@ const SummonerCard: React.FC<SummonerCardProps> = ({ iconNumber, name, level }):
             </Text>
             <Flex>
                 <Image
-                    src={`http://ddragon.leagueoflegends.com/cdn/10.3.1/img/profileicon/${iconNumber}.png`}
+                    src={`https://ddragon.leagueoflegends.com/cdn/10.3.1/img/profileicon/${iconNumber}.png`}
                     size="200px"
                     p={3}
                     rounded={20}

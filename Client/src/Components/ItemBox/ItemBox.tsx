@@ -12,7 +12,7 @@ const ItemBox: React.FC<ItemBoxProps> = ({ leagueItemId }) => {
                 <Image
                     rounded="md"
                     size="35px"
-                    src={`http://ddragon.leagueoflegends.com/cdn/10.3.1/img/item/${leagueItemId}.png`}
+                    src={`https://ddragon.leagueoflegends.com/cdn/10.3.1/img/item/${leagueItemId}.png`}
                     m={1}
                 />
             ) : (
