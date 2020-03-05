@@ -19,8 +19,10 @@ interface Error extends ErrorRequestHandler {
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/', express.static(path.join(__dirname, 'Client/build')));
-app.use('/', homeRouter);
+app.get(['/app', '/app/*'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'Client/build/index.html'));
+});
+app.use(express.static(path.join(__dirname, 'Client/build')));
 app.use('/summoners', summonerRouter);
 app.use('/matches', matchesRouter);
 
@@ -36,10 +38,6 @@ db.on('error', error => console.log(error));
 db.once('open', () => console.log('connected to database'));
 
 const PORT = process.env.PORT || 8080;
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Client/build'));
-});
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     res.status(err.status || 500);

@@ -22,7 +22,7 @@ const App = (): JSX.Element => {
             <ThemeProvider theme={customTheme}>
                 <CSSReset />
                 <ReactQueryConfigProvider config={queryConfig}>
-                    <Router>
+                    <Router basename="/app">
                         <Switch>
                             <Route path="/" exact render={(): JSX.Element => <Redirect to={'/home'} />} />
                             <Route path="/summoners/:name" component={SummonerPage} />
