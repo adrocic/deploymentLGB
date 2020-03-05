@@ -6,7 +6,6 @@ import cors = require('cors');
 import mongoose = require('mongoose');
 import matchesRouter from './routes/matches';
 import summonerRouter from './routes/summoner';
-import homeRouter from './routes/home';
 import path = require('path');
 import './env.ts';
 const app = express();
