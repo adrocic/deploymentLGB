@@ -12,6 +12,7 @@ interface MatchResponse extends Response {
 export const getSummonerByName = async (req: Request, res: MatchResponse, next: NextFunction): Promise<void> => {
     const nameParam = req.params.name;
     try {
+        console.log(process.env.API_KEY);
         const summoner = await summonerInstance.get(`/summoners/by-name/${nameParam}`);
 
         if (summoner) {
