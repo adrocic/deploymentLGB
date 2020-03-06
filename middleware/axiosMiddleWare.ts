@@ -49,7 +49,7 @@ export const getMatchListByAccountId = async (req: Request, res: MatchResponse, 
     try {
         const matchList = await matchInstance.get(`/matchlists/by-account/${accountIdParam}?queue=${queue}`);
         if (matchList) {
-            const clone = [...matchList.data.matches].slice(0, 40);
+            const clone = [...matchList.data.matches].slice(0, 10);
             res.json(clone);
         } else {
             res.status(404);
