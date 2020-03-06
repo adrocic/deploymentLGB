@@ -3,6 +3,7 @@ import {
     Flex,
     Image,
     Text,
+    Stack,
     Spinner,
     Modal,
     Button,
@@ -37,6 +38,29 @@ const MatchCard: React.FC<MatchInfoProps> = ({ matchInfo, champId }): JSX.Elemen
 
     const championPlayed = Object.values(data?.data.data || {}).find(e => e.key === matchInfo.champion.toString());
 
+    const stats = singleMatch.data?.data?.participants.find(e => e.championId === champId)?.stats;
+
+    const kda = `${stats?.kills} / ${stats?.deaths} / ${stats?.assists}`;
+
+    const gameResult = stats && stats.kills > stats.deaths ? 'Victory' : 'Defeat';
+
+    const resultColor = gameResult && gameResult === 'Victory' ? 'green.500' : 'red.400';
+
+    const minutes = singleMatch.data && Math.floor(singleMatch.data.data.gameDuration / 60);
+    const seconds = singleMatch.data && Math.floor(singleMatch.data.data.gameDuration % 60);
+
+    const formatDuration = (minutes: any, seconds: any) => {
+        if (seconds != null && seconds < 10) {
+            return `${minutes}:0${seconds}`;
+        } else if (seconds === 0) {
+            return `${minutes}:00`;
+        } else {
+            return `${minutes}:${seconds}`;
+        }
+    };
+
+    const creepScore = stats && stats.totalMinionsKilled;
+
     return (
         <>
             <Flex
@@ -44,33 +68,55 @@ const MatchCard: React.FC<MatchInfoProps> = ({ matchInfo, champId }): JSX.Elemen
                 onClick={onOpen}
                 width={{ base: 400, md: 600, lg: 800 }}
                 height="fit-content"
-                bg="gray.50"
+                bg="gray.100"
                 rounded="md"
                 boxShadow="md"
                 p={5}
             >
                 {data && singleMatch.data && championPlayed ? (
                     <>
-                        <Image
-                            rounded="full"
-                            size="75px"
-                            src={`https://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${championPlayed.image.full}`}
-                        />
-                        <Flex direction="column" height="75px" justifyContent="space-between">
-                            <Text fontSize={12} color="gray.400">
-                                {championPlayed.name}
-                            </Text>
-                            <Text fontSize={12} color="gray.500">
-                                {matchInfo.lane}
-                            </Text>
+                        <Flex justify="space-between" width="inherit" alignItems="center">
+                            <Flex>
+                                <Image
+                                    rounded="full"
+                                    size="75px"
+                                    src={`https://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${championPlayed.image.full}`}
+                                />
+                                <Flex
+                                    direction="column"
+                                    height="75px"
+                                    justifyContent="space-between"
+                                    alignItems="flex-start"
+                                >
+                                    <Text fontSize={12} color="gray.400">
+                                        {championPlayed.name}
+                                    </Text>
+                                    <Text fontSize={12} color="gray.500">
+                                        {matchInfo.lane}
+                                    </Text>
+                                </Flex>
+                            </Flex>
+                            <Stack color={resultColor} direction="column" spacing={2}>
+                                <Text>{gameResult}</Text>
+                                <Text fontWeight="thin" fontSize={18}>
+                                    {kda}
+                                </Text>
+                                <Text color="gray.500" fontSize={14}>
+                                    {creepScore}cs
+                                </Text>
+                            </Stack>
+
+                            <Flex direction="column" align="center">
+                                <Text fontSize={16}>Ranked 5x5</Text>
+                                <ItemStack singleMatchData={singleMatch.data.data || null} champId={champId} />
+                            </Flex>
+                            <Stack direction="column" spacing={2}>
+                                <Text alignSelf="start" ml="auto" color="gray.400" fontWeight="normal" fontSize={12}>
+                                    {formattedDate}
+                                </Text>
+                                <Text color="gray.600">{formatDuration(minutes, seconds)}</Text>
+                            </Stack>
                         </Flex>
-                        <Flex direction="column" width="inherit" align="center">
-                            <Text fontSize={16}>Ranked 5x5</Text>
-                            <ItemStack singleMatchData={singleMatch.data.data || null} champId={champId} />
-                        </Flex>
-                        <Text alignSelf="start" ml="auto" color="gray.400" fontWeight="normal" fontSize={12}>
-                            {formattedDate}
-                        </Text>
                     </>
                 ) : isLoading || singleMatch.isLoading ? (
                     <Spinner size="md" />

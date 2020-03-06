@@ -15,7 +15,7 @@ const StatsCard: React.FC<StatsCardProps> = ({ leaguePoints, wins, losses, rank,
     return (
         <>
             {tier ? (
-                <Flex rounded="lg" bg="gray.50" boxShadow="md" direction="column" maxWidth="fit-content" p={5}>
+                <Flex rounded="lg" bg="gray.100" boxShadow="md" direction="column" maxWidth="fit-content" p={5}>
                     <Image src={require(`Assets/ranked-emblems/${tier}.png`)} size="200px" />
                     <Flex direction="column" align="center">
                         <Flex mt={5}>

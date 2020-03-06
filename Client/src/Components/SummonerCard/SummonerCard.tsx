@@ -9,7 +9,7 @@ type SummonerCardProps = {
 
 const SummonerCard: React.FC<SummonerCardProps> = ({ iconNumber, name, level }): JSX.Element => {
     return (
-        <Flex rounded="lg" boxShadow="md" maxWidth="fit-content" p={5} bg="gray.50" direction="column">
+        <Flex rounded="lg" boxShadow="md" maxWidth="fit-content" p={5} bg="gray.100" direction="column">
             <Text fontSize={12} fontStyle="italic" alignSelf="center">
                 Summoner
             </Text>
