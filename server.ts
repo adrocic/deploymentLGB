@@ -7,7 +7,7 @@ import mongoose = require('mongoose');
 import matchesRouter from './routes/matches';
 import summonerRouter from './routes/summoner';
 import path = require('path');
-
+import './env.ts';
 const app = express();
 
 interface Error extends ErrorRequestHandler {
@@ -26,13 +26,10 @@ app.get(['/app', '/app/*'], (req, res) => {
 });
 
 //DATABASE CONNECTION STUFF
-mongoose.connect(
-    'mongodb+srv://adrocic:GfnkuqB8j8x83fne@cluster0-vwtlm.gcp.mongodb.net/test?retryWrites=true&w=majority',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    },
-);
+mongoose.connect(process.env.DB_CONNECTION ?? '', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 
