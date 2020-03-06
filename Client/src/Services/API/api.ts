@@ -1,7 +1,15 @@
 import axios from 'axios';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const API = axios.create({
-    baseURL: `${process.env.BASE_URL ?? 'http://localhost:8080/app'}/api`,
-});
+if (process.env.NODE_ENV === 'production') {
+    const API = axios.create({
+        baseURL: 'https://lolgamebuddy.herokuapp.com/app/api',
+    });
+} else {
+    const API = axios.create({
+        baseURL: 'http://localhost:8080/app/api',
+    });
+}
 
 export default API;
