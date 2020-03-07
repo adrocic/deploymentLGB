@@ -22,7 +22,7 @@ type participant = {
     stats: statsObject;
 };
 type statsObject = {
-    [key: string]: number;
+    [key: string]: number | boolean;
 };
 
 type fetchMatchProps = {

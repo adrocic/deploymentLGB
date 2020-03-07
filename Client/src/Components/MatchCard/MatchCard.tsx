@@ -42,7 +42,7 @@ const MatchCard: React.FC<MatchInfoProps> = ({ matchInfo, champId }): JSX.Elemen
 
     const kda = `${stats?.kills} / ${stats?.deaths} / ${stats?.assists}`;
 
-    const gameResult = stats && stats.kills > stats.deaths ? 'Victory' : 'Defeat';
+    const gameResult = stats && stats.win === true ? 'Victory' : 'Defeat';
 
     const resultColor = gameResult && gameResult === 'Victory' ? 'green.500' : 'red.400';
 
