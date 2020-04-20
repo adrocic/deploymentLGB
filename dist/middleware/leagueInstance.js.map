@@ -1,0 +1,1 @@
+{"version":3,"file":"leagueInstance.js","sourceRoot":"","sources":["../../middleware/leagueInstance.ts"],"names":[],"mappings":";;;;;AAAA,gDAA0B;AAC1B,qBAAmB;AAEnB,IAAM,cAAc,GAAG,eAAK,CAAC,MAAM,CAAC;IAChC,OAAO,EAAE,6CAA6C;IACtD,OAAO,EAAE,IAAI;IACb,OAAO,EAAE,EAAE,cAAc,EAAE,KAAG,OAAO,CAAC,GAAG,CAAC,OAAS,EAAE;CACxD,CAAC,CAAC;AAEH,kBAAe,cAAc,CAAC"}

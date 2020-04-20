@@ -7,9 +7,16 @@ import NavBar from 'Components/NavBar';
 import SummonerCard from 'Components/SummonerCard';
 import StatsCard from 'Components/StatsCard';
 import MatchList from 'Components/MatchList';
+import { RouteComponentProps } from 'react-router-dom';
 
-const SummonerPage = ({ match }: any): JSX.Element => {
-    const summonerName = match.params.name;
+interface MatchParams {
+    name: string;
+}
+
+type MatchProps = RouteComponentProps<MatchParams>;
+
+const SummonerPage = (props: MatchProps): JSX.Element => {
+    const summonerName = props.match.params.name;
     const { data, isLoading, error } = useQuery(['summoner', { summonerName }], fetchSummonerByName);
 
     return (

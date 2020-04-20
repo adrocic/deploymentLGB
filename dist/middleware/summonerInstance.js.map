@@ -1,0 +1,1 @@
+{"version":3,"file":"summonerInstance.js","sourceRoot":"","sources":["../../middleware/summonerInstance.ts"],"names":[],"mappings":";;;;;AAAA,gDAA0B;AAC1B,qBAAmB;AAEnB,IAAM,gBAAgB,GAAG,eAAK,CAAC,MAAM,CAAC;IAClC,OAAO,EAAE,+CAA+C;IACxD,OAAO,EAAE,IAAI;IACb,OAAO,EAAE,EAAE,cAAc,EAAE,KAAG,OAAO,CAAC,GAAG,CAAC,OAAS,EAAE;CACxD,CAAC,CAAC;AAEH,kBAAe,gBAAgB,CAAC"}
